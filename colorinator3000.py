@@ -32,4 +32,4 @@ blue_pin = board.D21
 
 led = adafruit_rgbled.RGBLED(red_pin, blue_pin, green_pin)
 while True:
-    led.color = (37, 110, 230)
+    led.color = (187, 0, 255)
