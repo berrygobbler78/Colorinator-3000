@@ -16,9 +16,9 @@ lcd_rows = 2
 
 lcd = characterlcd.Character_LCD_Mono(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7, lcd_columns, lcd_rows)
 
-red_pin = digitalio.DigitalInOut(board.D16)
-green_pin = digitalio.DigitalInOut(board.D20)
-blue_pin = digitalio.DigitalInOut(board.D21)
+red_pin = board.D16
+green_pin = board.D20
+blue_pin = board.D21
 
 # while True:
 #     lcd.message = "Hold button to select color"
