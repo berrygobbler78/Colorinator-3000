@@ -35,8 +35,10 @@ while True:
         if not cur_state:
             lcd.message = "button down"
             led.color = (0, 255, 0)
+            lcd.clear()
         else:
             lcd.message = "button up"
             led.color = (255, 0, 0)
+            lcd.clear()
     prev_state = cur_state
-    lcd.clear()
+    
