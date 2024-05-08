@@ -39,4 +39,4 @@ while True:
             lcd.message = "button up"
             led.color = (255, 0, 0)
     prev_state = cur_state
-    lcd.clear
+    lcd.clear()
