@@ -27,20 +27,21 @@ btn = digitalio.DigitalInOut(board.D14)
 btn.direction = digitalio.Direction.INPUT
 btn.pull = digitalio.Pull.UP
 
+# btn starts false
 prev_state = btn.value
-print(prev_state)
 
 while True:
+    # capture new state
     cur_state = btn.value
-    if cur_state != prev_state:
-        if not cur_state:
-            lcd.message = "button unpressed"
-            led.color = (255, 0, 0)
-            lcd.clear()
-        else:
-            lcd.message = "button pressed"
-            led.color = (0, 255, 0)
-            time.sleep(0.1)
-            lcd.clear()
+    
+    # if new state != previous state
+    while cur_state != prev_state:
+        lcd.message = "button pressed"
+        led.color = (0, 255, 0)
+    # default state
+    lcd.message = "button unpressed"
+    led.color = (255, 0, 0)
+    lcd.clear()
     prev_state = cur_state
+    
     
