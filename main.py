@@ -27,18 +27,21 @@ btn = digitalio.DigitalInOut(board.D14)
 btn.direction = digitalio.Direction.INPUT
 btn.pull = digitalio.Pull.UP
 
-prev_state = -btn.value
+prev_state = btn.value
 
 while True:
     cur_state = btn.value
+    lcd.message = "Press button to select color in color"
     if cur_state != prev_state:
         if not cur_state:
             lcd.message = "button down"
             led.color = (0, 255, 0)
+            time.sleep(0.1)
             lcd.clear()
         else:
             lcd.message = "button up"
             led.color = (255, 0, 0)
+            time.sleep(0.1)
             lcd.clear()
     prev_state = cur_state
     
