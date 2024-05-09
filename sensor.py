@@ -80,6 +80,7 @@ def loop():
     time.sleep(0.2)  
 
     setColor([int(red), int(green), int(blue)])
+    print([int(red), int(green), int(blue)])
 
 
 
