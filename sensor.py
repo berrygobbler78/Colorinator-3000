@@ -3,7 +3,7 @@ import time
 
 
 
-s2 = 8
+s2 = 12
 s3 = 25
 signal = 24
 NUM_CYCLES = 10
