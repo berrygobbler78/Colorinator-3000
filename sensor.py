@@ -68,3 +68,5 @@ if __name__=='__main__':
 
     except KeyboardInterrupt:
         endprogram()
+    finally:
+        GPIO.cleanup()
