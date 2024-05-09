@@ -3,11 +3,13 @@ import board
 import digitalio
 
 # Configure the sensor pins
-s2 = digitalio.DigitalInOut(board.D2)
+s2 = digitalio.DigitalInOut(board.D8)
 s2.direction = digitalio.Direction.OUTPUT
-s3 = digitalio.DigitalInOut(board.D3)
+
+s3 = digitalio.DigitalInOut(board.D25)
 s3.direction = digitalio.Direction.OUTPUT
-sensor_out = digitalio.DigitalInOut(board.D4)
+
+sensor_out = digitalio.DigitalInOut(board.D24)
 sensor_out.direction = digitalio.Direction.INPUT
 
 # Function to read color
