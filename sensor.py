@@ -5,6 +5,7 @@ import digitalio
 import adafruit_rgbled
 import adafruit_character_lcd.character_lcd as characterlcd
 
+GPIO.cleanup()
 
 s2 = 12
 s3 = 25
