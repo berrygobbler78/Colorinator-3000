@@ -3,9 +3,9 @@ import time
 
 
 
-s2 = 23
-s3 = 24
-signal = 25
+s2 = 8
+s3 = 25
+signal = 24
 NUM_CYCLES = 10
 
 
