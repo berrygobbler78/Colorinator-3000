@@ -1,11 +1,11 @@
 import time
 import board
-import pulseio
+import digitalio
 
 # Configure the sensor pins
-s2 = pulseio.DigitalInOut(board.D2)
-s3 = pulseio.DigitalInOut(board.D3)
-sensor_out = pulseio.DigitalInOut(board.D4)
+s2 = digitalio.DigitalInOut(board.D2)
+s3 = digitalio.DigitalInOut(board.D3)
+sensor_out = digitalio.DigitalInOut(board.D4)
 
 # Function to read color
 def read_color():
