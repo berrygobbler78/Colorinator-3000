@@ -39,6 +39,17 @@ BLUE.start(0)
 
 print("\n")
   
+if __name__=='__main__':
+
+    try:
+        loop()
+
+    except KeyboardInterrupt:
+        pass
+    finally:
+        GPIO.cleanup(12)
+        GPIO.cleanup(24)
+        GPIO.cleanup(25)
 
 def setColor(rgb = []):
     # Convert 0-255 range to 0-100.
@@ -87,14 +98,3 @@ def loop():
 def endprogram():
     GPIO.cleanup()
 
-if __name__=='__main__':
-
-    try:
-        loop()
-
-    except KeyboardInterrupt:
-        endprogram()
-    finally:
-        GPIO.cleanup(12)
-        GPIO.cleanup(24)
-        GPIO.cleanup(25)
