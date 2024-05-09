@@ -1,99 +1,70 @@
+import RPi.GPIO as GPIO
 import time
-import board
-import digitalio
-import pulseio
-import busio
-import simpleio
 
-# Configure the sensor pins
-s0 = digitalio.DigitalInOut(board.D12)
-s0.direction = digitalio.Direction.OUTPUT
 
-s1 = digitalio.DigitalInOut(board.D7)
-s1.direction = digitalio.Direction.OUTPUT
 
-s2 = digitalio.DigitalInOut(board.D8)
-s2.direction = digitalio.Direction.OUTPUT
+s2 = 23
+s3 = 24
+signal = 25
+NUM_CYCLES = 10
 
-s3 = digitalio.DigitalInOut(board.D25)
-s3.direction = digitalio.Direction.OUTPUT
 
-out = pulseio.PulseIn(board.D18, idle_state=True)
+def setup():
+  GPIO.setmode(GPIO.BCM)
+  GPIO.setup(signal,GPIO.IN, pull_up_down=GPIO.PUD_UP)
+  GPIO.setup(s2,GPIO.OUT)
+  GPIO.setup(s3,GPIO.OUT)
+  print("\n")
+  
 
-s0.value = True
-s1.value = False
 
-while True:
-    s2.value = False
-    s3.value = False
 
-    time.sleep(0.01)
 
-    while(out) == 0:
-        pass
+def loop():
+  temp = 1
+  while(1):  
+
+    GPIO.output(s2,GPIO.LOW)
+    GPIO.output(s3,GPIO.LOW)
+    time.sleep(0.3)
+    start = time.time()
+    for impulse_count in range(NUM_CYCLES):
+      GPIO.wait_for_edge(signal, GPIO.FALLING)
+    duration = time.time() - start      #seconds to run for loop
+    red  = NUM_CYCLES / duration   #in Hz
+    print("red value - ",red)
+
+    GPIO.output(s2,GPIO.LOW)
+    GPIO.output(s3,GPIO.HIGH)
+    time.sleep(0.3)
+    start = time.time()
+    for impulse_count in range(NUM_CYCLES):
+      GPIO.wait_for_edge(signal, GPIO.FALLING)
+    duration = time.time() - start
+    blue = NUM_CYCLES / duration
+    print("blue value - ",blue)
+
+    GPIO.output(s2,GPIO.HIGH)
+    GPIO.output(s3,GPIO.HIGH)
+    time.sleep(0.3)
+    start = time.time()
+    for impulse_count in range(NUM_CYCLES):
+      GPIO.wait_for_edge(signal, GPIO.FALLING)
+    duration = time.time() - start
+    green = NUM_CYCLES / duration
+    print("green value - ",green)
+    time.sleep(2)  
+
+
+def endprogram():
+    GPIO.cleanup()
+
+if __name__=='__main__':
     
-    out.pause()
+    setup()
 
-    red_freq = out[0]
-    red_color = simpleio.map_range(red_freq, 100, 530, 100, 0)
+    try:
+        loop()
 
-    out.clear()
-    out.resume()
-
-    s2.value = True
-    s3.value = True
-
-    time.sleep(0.01)
-
-    # Wait for an active pulse
-    while len(out) == 0:
-        pass
-
-    # Pause while we do something with the pulses
-    out.pause()
-
-    green_freq = out[0]
-    green_color = simpleio.map_range(green_freq, 150, 700, 100, 0)
-
-    out.clear()
-    out.resume()
-
-    s2.value = False
-    s3.value = True
-
-    time.sleep(0.01)
-
-    # Wait for an active pulse
-    while len(out) == 0:
-        pass
-
-    # Pause while we do something with the pulses
-    out.pause()
-
-    blue_freq = out[0]
-    blue_color = simpleio.map_range(blue_freq, 70, 600, 100, 0)
-
-    #print("{}\t{}\t{}".format(red_freq, green_freq, blue_freq))
-    #print("{}\t{}\t{}".format(int(red_color), int(green_color), int(blue_color)))
-
-    if red_color < 50 and green_color < 50 and blue_color < 50:
-        color = "NONE "
-    elif red_color > green_color and \
-         red_color > blue_color:
-        color = "RED  "
-    elif green_color > red_color and \
-         green_color > blue_color:
-        color = "GREEN"
-    elif blue_color > green_color and \
-         blue_color > red_color:
-        color = "BLUE "
-
-    if color != prev_color:
-        prev_color = color
-
-        print(color)
-
-    time.sleep(0.1)
-
-    out.clear()
-    out.resume()
+    except KeyboardInterrupt:
+        endprogram()
