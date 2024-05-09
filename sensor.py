@@ -60,7 +60,6 @@ def loop():
       GPIO.wait_for_edge(signal, GPIO.FALLING)
     duration = time.time() - start      #seconds to run for loop
     red  = NUM_CYCLES / duration   #in Hz
-    print("red value - ",red)
 
     GPIO.output(s2,GPIO.LOW)
     GPIO.output(s3,GPIO.HIGH)
@@ -70,7 +69,6 @@ def loop():
       GPIO.wait_for_edge(signal, GPIO.FALLING)
     duration = time.time() - start
     blue = NUM_CYCLES / duration
-    print("blue value - ",blue)
 
     GPIO.output(s2,GPIO.HIGH)
     GPIO.output(s3,GPIO.HIGH)
@@ -80,7 +78,6 @@ def loop():
       GPIO.wait_for_edge(signal, GPIO.FALLING)
     duration = time.time() - start
     green = NUM_CYCLES / duration
-    print("green value - ",green)
     time.sleep(0.2)  
 
     setColor([int(red), int(green), int(blue)])
@@ -98,4 +95,6 @@ if __name__=='__main__':
     except KeyboardInterrupt:
         endprogram()
     finally:
-        GPIO.cleanup()
+        GPIO.cleanup(12)
+        GPIO.cleanup(24)
+        GPIO.cleanup(25)
