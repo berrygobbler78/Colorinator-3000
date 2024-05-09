@@ -11,9 +11,9 @@ s3 = 25
 signal = 24
 NUM_CYCLES = 10
 
-redPin = 16
-greenPin = 21
-bluePin = 20
+# redPin = 16
+# greenPin = 21
+# bluePin = 20
 #set pins as outputs
 
 GPIO.cleanup()
@@ -24,30 +24,30 @@ GPIO.setup(signal,GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(s2,GPIO.OUT)
 GPIO.setup(s3,GPIO.OUT)
 
-GPIO.setup(redPin,GPIO.OUT)
-GPIO.setup(greenPin,GPIO.OUT)
-GPIO.setup(bluePin,GPIO.OUT)
+# GPIO.setup(redPin,GPIO.OUT)
+# GPIO.setup(greenPin,GPIO.OUT)
+# GPIO.setup(bluePin,GPIO.OUT)
 
-GPIO.output(redPin, 0)
-GPIO.output(greenPin, 0)
-GPIO.output(bluePin, 0)
+# GPIO.output(redPin, 0)
+# GPIO.output(greenPin, 0)
+# GPIO.output(bluePin, 0)
 
-RED = GPIO.PWM(redPin, 100)
-GREEN = GPIO.PWM(greenPin, 100)
-BLUE = GPIO.PWM(bluePin, 100)
-RED.start(0)
-GREEN.start(0)
-BLUE.start(0)
+# RED = GPIO.PWM(redPin, 100)
+# GREEN = GPIO.PWM(greenPin, 100)
+# BLUE = GPIO.PWM(bluePin, 100)
+# RED.start(0)
+# GREEN.start(0)
+# BLUE.start(0)
 
 print("\n")
   
 
-def setColor(rgb = []):
-    # Convert 0-255 range to 0-100.
-    rgb = [(x / 255.0) * 100 for x in rgb]
-    RED.ChangeDutyCycle(rgb[0])
-    GREEN.ChangeDutyCycle(rgb[1])
-    BLUE.ChangeDutyCycle(rgb[2])
+# def setColor(rgb = []):
+#     # Convert 0-255 range to 0-100.
+#     rgb = [(x / 255.0) * 100 for x in rgb]
+#     RED.ChangeDutyCycle(rgb[0])
+#     GREEN.ChangeDutyCycle(rgb[1])
+#     BLUE.ChangeDutyCycle(rgb[2])
 
 
 def loop():
@@ -85,7 +85,7 @@ def loop():
     print("green value - ",green)
     time.sleep(2)  
 
-    setColor([int(red), int(green), int(blue)])
+    # setColor([int(red), int(green), int(blue)])
 
 
 
