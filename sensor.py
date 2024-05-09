@@ -5,6 +5,7 @@ import digitalio
 import adafruit_character_lcd.character_lcd as characterlcd
 
 GPIO.cleanup()
+GPIO.setwarnings(False)
 
 s2 = 12
 s3 = 25
@@ -16,8 +17,6 @@ NUM_CYCLES = 10
 # bluePin = 20
 #set pins as outputs
 
-GPIO.cleanup()
-GPIO.setwarnings(False)
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(signal,GPIO.IN, pull_up_down=GPIO.PUD_UP)
