@@ -29,7 +29,6 @@ def loop():
     time.sleep(0.3)
     start = time.time()
     for impulse_count in range(NUM_CYCLES):
-      time.sleep(0.01)
       GPIO.wait_for_edge(signal, GPIO.FALLING)
     duration = time.time() - start      #seconds to run for loop
     red  = NUM_CYCLES / duration   #in Hz
@@ -40,7 +39,6 @@ def loop():
     time.sleep(0.3)
     start = time.time()
     for impulse_count in range(NUM_CYCLES):
-      time.sleep(0.01)
       GPIO.wait_for_edge(signal, GPIO.FALLING)
     duration = time.time() - start
     blue = NUM_CYCLES / duration
@@ -51,7 +49,6 @@ def loop():
     time.sleep(0.3)
     start = time.time()
     for impulse_count in range(NUM_CYCLES):
-      time.sleep(0.01)
       GPIO.wait_for_edge(signal, GPIO.FALLING)
     duration = time.time() - start
     green = NUM_CYCLES / duration
