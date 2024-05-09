@@ -17,6 +17,7 @@ bluePin = 21
 #set pins as outputs
 
 GPIO.cleanup()
+GPIO.setwarnings(False)
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(signal,GPIO.IN, pull_up_down=GPIO.PUD_UP)
