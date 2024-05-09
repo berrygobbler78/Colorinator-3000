@@ -79,7 +79,7 @@ def loop():
     green = NUM_CYCLES / duration
     time.sleep(0.2)  
 
-    setColor([int(red), int(green), int(blue)])
+    # setColor([int(red), int(green), int(blue)])
     print([int(red), int(green), int(blue)])
 
 
