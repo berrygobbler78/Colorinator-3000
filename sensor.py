@@ -18,7 +18,7 @@ s2.direction = digitalio.Direction.OUTPUT
 s3 = digitalio.DigitalInOut(board.D25)
 s3.direction = digitalio.Direction.OUTPUT
 
-out = pulseio.PulseIn(board.GP18, idle_state=True)
+out = pulseio.PulseIn(board.D18, idle_state=True)
 
 s0.value = True
 s1.value = False
