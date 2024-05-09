@@ -12,8 +12,8 @@ signal = 24
 NUM_CYCLES = 10
 
 redPin = 16
-greenPin = 20
-bluePin = 21
+greenPin = 21
+bluePin = 20
 #set pins as outputs
 
 GPIO.cleanup()
