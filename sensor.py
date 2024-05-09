@@ -42,6 +42,7 @@ print("\n")
 def setColor(rgb = []):
     # Convert 0-255 range to 0-100.
     rgb = [(x / 255.0) * 100 for x in rgb]
+    print(rgb)
     RED.ChangeDutyCycle(rgb[0])
     GREEN.ChangeDutyCycle(rgb[1])
     BLUE.ChangeDutyCycle(rgb[2])
@@ -53,7 +54,7 @@ def loop():
 
     GPIO.output(s2,GPIO.LOW)
     GPIO.output(s3,GPIO.LOW)
-    time.sleep(0.3)
+    time.sleep(0.1)
     start = time.time()
     for impulse_count in range(NUM_CYCLES):
       GPIO.wait_for_edge(signal, GPIO.FALLING)
@@ -62,7 +63,7 @@ def loop():
 
     GPIO.output(s2,GPIO.LOW)
     GPIO.output(s3,GPIO.HIGH)
-    time.sleep(0.3)
+    time.sleep(0.1)
     start = time.time()
     for impulse_count in range(NUM_CYCLES):
       GPIO.wait_for_edge(signal, GPIO.FALLING)
@@ -71,13 +72,13 @@ def loop():
 
     GPIO.output(s2,GPIO.HIGH)
     GPIO.output(s3,GPIO.HIGH)
-    time.sleep(0.3)
+    time.sleep(0.1)
     start = time.time()
     for impulse_count in range(NUM_CYCLES):
       GPIO.wait_for_edge(signal, GPIO.FALLING)
     duration = time.time() - start
     green = NUM_CYCLES / duration
-    time.sleep(0.2)  
+    time.sleep(0.1)  
 
     # setColor([int(red), int(green), int(blue)])
     print([int(red), int(green), int(blue)])
