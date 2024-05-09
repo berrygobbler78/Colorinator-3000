@@ -8,6 +8,7 @@ s3 = 25
 signal = 24
 NUM_CYCLES = 10
 
+GPIO.cleanup()
 
 def setup():
   GPIO.setmode(GPIO.BCM)
