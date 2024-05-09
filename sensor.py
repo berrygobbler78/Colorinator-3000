@@ -81,7 +81,7 @@ def loop():
     duration = time.time() - start
     green = NUM_CYCLES / duration
     print("green value - ",green)
-    time.sleep(2)  
+    time.sleep(0.2)  
 
     setColor([int(red), int(green), int(blue)])
 
