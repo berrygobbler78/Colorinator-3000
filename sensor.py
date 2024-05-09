@@ -4,6 +4,8 @@ import board
 import digitalio
 import adafruit_character_lcd.character_lcd as characterlcd
 
+GPIO.cleanup()
+
 s2 = 12
 s3 = 25
 signal = 24
